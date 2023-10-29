@@ -38,7 +38,25 @@ def trigonometry():
 def exponents():
     return
 
+#Return the square root of the number entered
 def square_root():
+
+    num = input("Enter the number to square root (Enter 'stop' to exit to main menu): ")
+
+    #Check if user wants to exit to main menu
+    if (num.lower() == "stop"):
+        return
+    
+    print("---------------------------------------------------------------------")
+
+    #Catch any invalid inputs and calculate square root
+    try:
+        root = float(math.sqrt(float(num)))
+        print("The square root of {} is: {:.3f}\n".format(num,root))
+    except (ValueError):
+        print("That is not a valid number. Try again.\n")
+        square_root()
+
     return
 
 def percentage():
