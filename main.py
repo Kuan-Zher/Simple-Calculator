@@ -24,7 +24,10 @@ def show_menu():
         square_root()
     elif response == 5:
         percentage()
-
+    else:
+        print("Unrecognized response")
+    
+    show_menu()
 
 def simple_arithmetic():
     return
