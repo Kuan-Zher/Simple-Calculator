@@ -33,7 +33,16 @@ def simple_arithmetic():
     return
 
 def trigonometry():
-    return
+    print("Select a trigonometric function to perform")
+    print("------------------------------------------")
+    print("1 | Sin")
+    print("2 | Cos")
+    print("3 | Tan")
+    print("4 | Inverse Sin")
+    print("5 | Inverse Cos")
+    print("6 | Inverse Tan")
+    trigonometric_function = int(input("Selected trigonometric function: "))
+    number = float(input("x: "))
 
 def exponents():
     return
