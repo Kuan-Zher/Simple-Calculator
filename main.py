@@ -29,7 +29,39 @@ def show_menu():
     
     show_menu()
 
+#Addition/ Subtraction/ Division/ Multiplication
 def simple_arithmetic():
+
+    #Prompt for user input
+    num1 = "Enter first number: "
+    num2 = "Enter second number: "
+
+    #Perform Operations
+    operator = input("Choose an operator (+, -, //, *)")
+    if operator == "+":
+        num1 = float(input(num1))
+        num2 = float(input(num2))
+        print("Addition: {} + {} = {}".format(num1,num2,num1+num2))
+    elif operator == "-":
+        num1 = float(input(num1))
+        num2 = float(input(num2))
+        print("Subtraction: {} - {} = {}".format(num1,num2,num1-num2))
+    elif operator == "//":
+        num1 = float(input(num1))
+        num2 = float(input(num2))
+        print("Division: {} // {} = {}".format(num1,num2,num1//num2))
+    elif operator == "*":
+        num1 = float(input(num1))
+        num2 = float(input(num2))
+        print("Multiplication: {} * {} = {}".format(num1,num2,num1*num2))
+    elif operator == "exit":
+        print("Exiting...")
+        return
+    else:
+        print("Invalid input. Please try again.\n")
+        simple_arithmetic()
+
+
     return
 
 def trigonometry():
