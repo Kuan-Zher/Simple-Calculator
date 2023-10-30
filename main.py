@@ -36,6 +36,11 @@ def trigonometry():
     return
 
 def exponents():
+    base = float(input("Enter the base: "))
+    exponent = float(input("Enter the exponent: "))
+    
+    result = base ** exponent
+    print(f"Result: {base}^{exponent} = {result}")
     return
 
 def square_root():
