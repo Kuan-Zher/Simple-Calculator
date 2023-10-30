@@ -37,7 +37,7 @@ def simple_arithmetic():
     num2 = "Enter second number: "
 
     #Perform Operations
-    operator = input("Choose an operator (+, -, //, *)")
+    operator = input("Choose an operator (+, -, //, * or 'exit' back to main menu)")
     if operator == "+":
         num1 = float(input(num1))
         num2 = float(input(num2))
