@@ -1,7 +1,7 @@
 import math
 
 def show_menu():
-    print("+-------------------+")
+    print("\n+-------------------+")
     print("| Simple Calculator |")
     print("+-------------------+")
     print("\nWhat do you want to do?")
@@ -12,7 +12,7 @@ def show_menu():
     print("4 | Square Root")
     print("5 | Percentage")
 
-    response = int(input("Enter your option: "))
+    response = int(input("\nEnter your option: "))
     
     if response == 1:
         simple_arithmetic()
@@ -25,7 +25,7 @@ def show_menu():
     elif response == 5:
         percentage()
     else:
-        print("Unrecognized response")
+        print("\nUnrecognized response")
     
     show_menu()
 
@@ -79,6 +79,14 @@ def square_root():
     return
 
 def percentage():
-    return
+    # Error handling 1: Cannot divide any number by 0 (denominator)
+
+    neumerator = float(input("\nEnter the numerator: "))
+    denominator = float(input("Enter the denominator: "))
+
+    percentage = (neumerator/denominator)*100
+
+    print(f"The percentage of {neumerator}/{denominator} is {percentage:.5}%")
+    return 
 
 show_menu()
