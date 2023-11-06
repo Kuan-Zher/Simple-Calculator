@@ -44,6 +44,22 @@ def trigonometry():
     trigonometric_function = int(input("Selected trigonometric function: "))
     number = float(input("x: "))
 
+    if trigonometric_function == 1:
+        print(f"sin(x) is {math.sin(number)}")
+    elif trigonometric_function == 2: 
+        print(f"cos(x) is {math.cos(number)}")
+    elif trigonometric_function == 3: 
+        print(f"tan(x) is {math.tan(number)}")
+    elif trigonometric_function == 4:
+        print(f"tan(x) is {math.asin(number)}")
+    elif trigonometric_function == 5:
+        print(f"tan(x) is {math.acos(number)}")
+    elif trigonometric_function == 6:
+        print(f"tan(x) is {math.atan(number)}")
+    else:
+        print("Unrecognized response")
+        
+
 def exponents():
     return
 
