@@ -1,0 +1,76 @@
+name: Simple Continuous Integration
+on:
+  push:
+    branches: [main]
+    
+jobs:
+  build:
+    name: Build and Test for Integration
+    runs-on: Ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10' 
+
+    - name: install plugin
+      run: |
+        pip install pytest pytest-cov
+    - name: checkout my codes
+      uses: actions/checkout@v4
+      with:
+        repository: Kuan-Zher/Simple-Calculator
+
+    - name: Checkout private repo
+      uses: actions/checkout@v4
+      with:
+        repository: Kuan-Zher/DevOps-Week-8-Practical
+        token: ${{ secrets.WEEK8 }} 
+        path: hiddenCode
+
+    - name: list current files
+      run: |
+        ls
+        sudo mv ./hiddenCode/*.* ./
+
+    - name: Test Command
+      if: always()
+      run: |
+        pytest -v -cov --junitxml=report.xml
+
+    - if: ${{ failure() }}
+      name: Create Issue on Failed workflow
+      uses: dacbd/create-issue-action@main
+      with:
+        token: ${{ github.token }}
+        title: Action workflow Workflow name - `${{ github.workflow }}` failed.
+        body: |
+          ### Context
+          [Failed Run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          [Codebase](https://github.com/${{ github.repository }}/tree/${{ github.sha }})
+          Workflow name - `${{ github.workflow }}`
+          Job -           `${{ github.job }}`
+          status -        `${{ job.status }}`
+          assignees: Kuan-Zher
+          
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action/composite@v2
+      if: always()
+      with:
+        junit_files: "report.xml"
+
+    - name: Prepare results
+      run: |
+        mkdir downloads
+        mv report.xml ./downloads
+        
+    - name: Upload test results
+      uses: actions/upload-artifact@v2
+      with: 
+        name: testResults
+        path: downloads   
+    - name: download remote test results
+      uses: actions/download-artifact@v2
+      with:
+        name: testResults
+      
